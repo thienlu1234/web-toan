@@ -4,6 +4,10 @@
 <head>
     <title>Toán Mpecplus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+
     <style>
         body {
             font-family: Arial;
@@ -17,11 +21,27 @@
             padding: 15px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .navbar a {
             color: white;
             text-decoration: none;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span {
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .hero {
@@ -45,12 +65,20 @@
 <body>
 
     <div class="navbar">
-        <div>📚 Toán Mpecplus</div>
+
+        <!-- LOGO -->
+        <a href="{% url 'home' %}" class="logo">
+            <img src="{% static 'images/logo.png' %}">
+            <span>Toán Mpecplus</span>
+        </a>
+
+        <!-- MENU -->
         <div>
             <a href="{% url 'home' %}">Trang chủ</a> |
             <a href="{% url 'courses' %}">Khóa học</a> |
             Liên hệ
         </div>
+
     </div>
 
     <div class="hero">
