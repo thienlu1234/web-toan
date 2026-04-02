@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,11 @@
             padding: 15px;
             display: flex;
             justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
         }
 
         .hero {
@@ -40,14 +46,18 @@
 
     <div class="navbar">
         <div>📚 Toán Mpecplus</div>
-        <div>Trang chủ | Khóa học | Liên hệ</div>
+        <div>
+            <a href="{% url 'home' %}">Trang chủ</a> |
+            <a href="{% url 'courses' %}">Khóa học</a> |
+            Liên hệ
+        </div>
     </div>
 
     <div class="hero">
         <h1>Học Toán cấp 2 dễ hiểu 🚀</h1>
         <p>Nền tảng học toán dành cho học sinh cấp 2</p>
         <br>
-        <a class="btn" href="#">Bắt đầu học</a>
+        <a class="btn" href="{% url 'courses' %}">Bắt đầu học</a>
     </div>
 
 </body>
