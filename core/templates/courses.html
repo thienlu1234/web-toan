@@ -2,12 +2,97 @@
 <html>
 <head>
     <title>Khóa học</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #f5f6fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            color: #2f3640;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Danh sách khóa học 📚</h1>
+<h1>📚 Chọn lớp học</h1>
 
-<a href="{% url 'home' %}">← Quay về trang chủ</a>
+<div class="container">
+
+    <a href="#">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" />
+            <h3>Lớp 6</h3>
+        </div>
+    </a>
+
+    <a href="#">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" />
+            <h3>Lớp 7</h3>
+        </div>
+    </a>
+
+    <a href="#">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" />
+            <h3>Lớp 8</h3>
+        </div>
+    </a>
+
+    <a href="#">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0" />
+            <h3>Lớp 9</h3>
+        </div>
+    </a>
+
+</div>
+
+<a class="back" href="{% url 'home' %}">← Quay về trang chủ</a>
 
 </body>
 </html>
