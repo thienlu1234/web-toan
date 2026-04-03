@@ -6,10 +6,9 @@
     <title>Toán Mpecplus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- favicon -->
     <link rel="icon" href="{% static 'images/logo.png' %}">
 
-    <!-- ICON LIBRARY -->
+    <!-- ICON -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
@@ -31,7 +30,6 @@
             padding: 20px;
         }
 
-        /* MENU */
         .menu-item {
             display: flex;
             align-items: center;
@@ -53,7 +51,6 @@
             font-weight: bold;
         }
 
-        /* ICON BOX */
         .icon-box {
             width: 40px;
             height: 40px;
@@ -61,7 +58,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
         }
 
         /* ICON COLORS */
@@ -85,7 +81,7 @@
             color: #2f3640;
         }
 
-        /* SOCIAL ICONS */
+        /* SOCIAL COLORS */
         .fb {
             color: #1877F2;
         }
@@ -139,10 +135,6 @@
             height: 35px;
         }
 
-        .logo span {
-            font-weight: bold;
-        }
-
         .right {
             display: flex;
             gap: 20px;
@@ -152,22 +144,6 @@
         .right a {
             color: white;
             text-decoration: none;
-            position: relative;
-        }
-
-        .right a::after {
-            content: "";
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            left: 0;
-            bottom: -3px;
-            background: #fbc531;
-            transition: 0.3s;
-        }
-
-        .right a:hover::after {
-            width: 100%;
         }
 
         .user {
@@ -209,7 +185,7 @@
         .course-card {
             width: 250px;
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             text-decoration: none;
             color: black;
@@ -223,8 +199,13 @@
             object-fit: cover;
         }
 
+        .course-card h3 {
+            padding: 12px;
+            font-size: 16px;
+        }
+
         .course-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.03);
         }
     </style>
 </head>
@@ -236,7 +217,7 @@
         <!-- SIDEBAR -->
         <div class="sidebar">
 
-            <a href="{% url 'login' %}" class="menu-item active">
+            <a href="{% url 'login' %}" class="menu-item">
                 <div class="icon-box"><i class="fa-solid fa-right-to-bracket"></i></div>
                 <span>Đăng nhập</span>
             </a>
@@ -312,6 +293,7 @@
                 </div>
             </div>
 
+            <!-- HERO -->
             <div class="hero">
                 <h1>Học Toán cấp 2 dễ hiểu 🚀</h1>
                 <p>Nền tảng học toán dành cho học sinh cấp 2</p>
@@ -319,6 +301,7 @@
                 <a class="btn" href="{% url 'courses' %}">Bắt đầu học</a>
             </div>
 
+            <!-- COURSES -->
             <div class="courses">
                 <h2>Chọn lớp học 📚</h2>
 

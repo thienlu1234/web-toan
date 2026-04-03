@@ -82,3 +82,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+def course_detail(request, id):
+    course = Course.objects.get(id=id)
+    return render(request, 'course_detail.html', {'course': course})
