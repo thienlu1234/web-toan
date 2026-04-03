@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #e84118;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #c23616;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h2>Đăng nhập</h2>
+    <div class="box">
+        <h2>Đăng nhập</h2>
 
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Tên đăng nhập" required><br><br>
-    <input type="password" name="password" placeholder="Mật khẩu" required><br><br>
-    <button type="submit">Đăng nhập</button>
-</form>
+        {% if error %}
+        <p style="color:red">{{ error }}</p>
+        {% endif %}
 
-<p>Chưa có tài khoản? <a href="/register/">Đăng ký</a></p>
+        <form method="POST">
+            {% csrf_token %}
+            <input name="username" placeholder="Tên đăng nhập">
+            <input type="password" name="password" placeholder="Mật khẩu">
+            <button type="submit">Đăng nhập</button>
+        </form>
+
+        <a href="/register/">Chưa có tài khoản? Đăng ký</a>
+    </div>
 
 </body>
+
 </html>
