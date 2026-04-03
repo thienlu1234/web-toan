@@ -5,7 +5,11 @@
 <head>
     <title>Toán Mpecplus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
     <link rel="icon" href="{% static 'images/logo.png' %}">
+
+    <!-- ICON LIBRARY -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
@@ -19,57 +23,102 @@
             display: flex;
         }
 
+        /* SIDEBAR */
         .sidebar {
             width: 250px;
             min-height: 100vh;
             background: #eef3f8;
             padding: 20px;
-            box-sizing: border-box;
         }
 
+        /* MENU */
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
+            gap: 15px;
+            padding: 12px;
             border-radius: 12px;
-            color: #1f5f99;
             text-decoration: none;
+            color: #2f3640;
             margin: 8px 0;
             transition: 0.2s;
-            font-weight: 600;
-        }
-
-        .menu-item i {
-            width: 22px;
-            text-align: center;
-            font-size: 20px;
         }
 
         .menu-item:hover {
-            background: #dfe6ee;
+            background: #dfe6e9;
         }
 
         .menu-item.active {
-            background: #dfe8f5;
+            background: #dcdde1;
+            font-weight: bold;
+        }
+
+        /* ICON BOX */
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* ICON COLORS */
+        .course {
+            background: #ffeaa7;
+            color: #e17055;
+        }
+
+        .exam {
+            background: #dff9fb;
+            color: #0984e3;
+        }
+
+        .battle {
+            background: #f6e58d;
+            color: #e1b12c;
+        }
+
+        .doc {
+            background: #dcdde1;
+            color: #2f3640;
+        }
+
+        /* SOCIAL ICONS */
+        .fb {
+            color: #1877F2;
+        }
+
+        .yt {
+            color: #FF0000;
+        }
+
+        .tt {
+            color: #000000;
+        }
+
+        .ms {
+            color: #00B2FF;
         }
 
         .sidebar h4 {
-            margin: 24px 0 10px;
-            color: #2f3640;
-            font-size: 18px;
+            margin-top: 20px;
+            color: #636e72;
         }
 
         .sidebar hr {
             border: none;
-            border-top: 1px solid #cfd8e3;
-            margin: 14px 0;
+            border-top: 1px solid #ccc;
+            margin: 15px 0;
         }
 
+        /* MAIN */
         .main {
             flex: 1;
         }
 
+        /* NAVBAR */
         .navbar {
             background: #353b48;
             padding: 15px 30px;
@@ -92,19 +141,18 @@
 
         .logo span {
             font-weight: bold;
-            font-size: 18px;
         }
 
         .right {
             display: flex;
-            align-items: center;
             gap: 20px;
+            align-items: center;
         }
 
         .right a {
-            position: relative;
             color: white;
             text-decoration: none;
+            position: relative;
         }
 
         .right a::after {
@@ -127,9 +175,10 @@
             font-weight: bold;
         }
 
+        /* HERO */
         .hero {
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px;
         }
 
         .btn {
@@ -138,23 +187,22 @@
             padding: 12px 25px;
             border-radius: 5px;
             text-decoration: none;
-            display: inline-block;
         }
 
         .btn:hover {
             background: #c23616;
         }
 
+        /* COURSES */
         .courses {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px;
         }
 
         .course-list {
             display: flex;
             justify-content: center;
             gap: 25px;
-            margin-top: 30px;
             flex-wrap: wrap;
         }
 
@@ -175,46 +223,43 @@
             object-fit: cover;
         }
 
-        .course-card h3 {
-            padding: 15px;
-        }
-
         .course-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 
 <body>
+
     <div class="layout">
 
+        <!-- SIDEBAR -->
         <div class="sidebar">
 
             <a href="{% url 'login' %}" class="menu-item active">
-                <i class="fa-solid fa-right-to-bracket"></i>
+                <div class="icon-box"><i class="fa-solid fa-right-to-bracket"></i></div>
                 <span>Đăng nhập</span>
             </a>
 
             <hr>
 
             <a href="{% url 'courses' %}" class="menu-item">
-                <i class="fa-solid fa-circle-play"></i>
+                <div class="icon-box course"><i class="fa-solid fa-play"></i></div>
                 <span>Khóa học</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-solid fa-chart-column"></i>
+                <div class="icon-box exam"><i class="fa-solid fa-chart-column"></i></div>
                 <span>Thi online</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-solid fa-trophy"></i>
+                <div class="icon-box battle"><i class="fa-solid fa-trophy"></i></div>
                 <span>Đấu trường lý thuyết</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-solid fa-file-lines"></i>
+                <div class="icon-box doc"><i class="fa-solid fa-file-lines"></i></div>
                 <span>Tài liệu</span>
             </a>
 
@@ -223,27 +268,28 @@
             <h4>Liên kết</h4>
 
             <a href="#" class="menu-item">
-                <i class="fa-brands fa-facebook"></i>
-                <span>Facebook Mpecplus</span>
+                <i class="fa-brands fa-facebook fb"></i>
+                <span>Facebook</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-brands fa-youtube"></i>
-                <span>YouTube Mpecplus</span>
+                <i class="fa-brands fa-youtube yt"></i>
+                <span>YouTube</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-brands fa-tiktok"></i>
-                <span>TikTok Mpecplus</span>
+                <i class="fa-brands fa-tiktok tt"></i>
+                <span>TikTok</span>
             </a>
 
             <a href="#" class="menu-item">
-                <i class="fa-brands fa-facebook-messenger"></i>
-                <span>Messenger Mpecplus</span>
+                <i class="fa-brands fa-facebook-messenger ms"></i>
+                <span>Messenger</span>
             </a>
 
         </div>
 
+        <!-- MAIN -->
         <div class="main">
 
             <div class="navbar">
@@ -255,7 +301,6 @@
                 <div class="right">
                     <a href="{% url 'home' %}">Trang chủ</a>
                     <a href="{% url 'courses' %}">Khóa học</a>
-                    <a href="#">Liên hệ</a>
 
                     {% if user.is_authenticated %}
                     <span class="user">👋 {{ user.username }}</span>
@@ -301,7 +346,9 @@
             </div>
 
         </div>
+
     </div>
+
 </body>
 
 </html>
