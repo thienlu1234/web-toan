@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Toán Mpecplus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,28 +16,26 @@
             background: #f5f6fa;
         }
 
+        /* NAVBAR */
         .navbar {
             background: #2f3640;
-            color: white;
-            padding: 15px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-        }
-
+        /* LOGO */
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
+            color: white;
+            text-decoration: none;
         }
 
         .logo img {
-            height: 40px;
+            height: 35px;
         }
 
         .logo span {
@@ -44,11 +43,36 @@
             font-size: 18px;
         }
 
+        /* MENU RIGHT */
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .right a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .right a:hover {
+            color: #fbc531;
+        }
+
+        /* USER */
+        .user {
+            color: #fbc531;
+            font-weight: bold;
+        }
+
+        /* HERO */
         .hero {
             text-align: center;
             padding: 80px 20px;
         }
 
+        /* BUTTON */
         .btn {
             background: #e84118;
             color: white;
@@ -59,35 +83,36 @@
 
         .btn:hover {
             background: #c23616;
-            
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: white;
-        }    
     </style>
 </head>
+
 <body>
 
     <div class="navbar">
 
-        <!-- LOGO -->
-        <a href="{% url 'home' %}" class="logo">
-            <img src="{% static 'images/logo.png' %}">
-            <span>Toán Mpecplus</span>
-        </a>
-
-        <!-- MENU -->
-        <div>
-            <a href="{% url 'home' %}">Trang chủ</a> |
-            <a href="{% url 'courses' %}">Khóa học</a> |
-            Liên hệ
+        <!-- LEFT -->
+        <div class="left">
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'images/logo.png' %}">
+                <span>Toán Mpecplus</span>
+            </a>
         </div>
-            <a href="/login/">Đăng nhập</a> |
-            <a href="/register/">Đăng ký</a>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <a href="{% url 'home' %}">Trang chủ</a>
+            <a href="{% url 'courses' %}">Khóa học</a>
+            <a href="#">Liên hệ</a>
+
+            {% if user.is_authenticated %}
+            <span class="user">👋 {{ user.username }}</span>
+            <a href="{% url 'logout' %}">Đăng xuất</a>
+            {% else %}
+            <a href="{% url 'login' %}">Đăng nhập</a>
+            <a href="{% url 'register' %}">Đăng ký</a>
+            {% endif %}
+        </div>
 
     </div>
 
@@ -99,4 +124,5 @@
     </div>
 
 </body>
+
 </html>
