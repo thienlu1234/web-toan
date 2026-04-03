@@ -14,21 +14,36 @@ def courses(request):
 # REGISTER
 def register_view(request):
     if request.method == 'POST':
+        fullname = request.POST.get('fullname')
         username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
 
-        # kiểm tra user tồn tại
+        # kiểm tra username
         if User.objects.filter(username=username).exists():
             return render(request, 'register.html', {
                 'error': 'Tài khoản đã tồn tại'
             })
 
+        # kiểm tra password
+        if password != confirm_password:
+            return render(request, 'register.html', {
+                'error': 'Mật khẩu không khớp'
+            })
+
         # tạo user
-        user = User.objects.create_user(username=username, password=password)
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
+        )
 
-        # auto login sau khi đăng ký
+        # lưu họ tên
+        user.first_name = fullname
+        user.save()
+
         login(request, user)
-
         return redirect('home')
 
     return render(request, 'register.html')

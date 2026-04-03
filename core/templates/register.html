@@ -3,70 +3,105 @@
 
 <head>
     <title>Đăng ký</title>
+
     <style>
         body {
             font-family: Arial;
             background: #f5f6fa;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 50px;
         }
 
         .box {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
         }
 
-        input {
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-size: 14px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        input,
+        select {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            background: #eef1f5;
         }
 
         button {
+            margin-top: 20px;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: #0984e3;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
         }
 
         button:hover {
             background: #0652dd;
         }
 
-        a {
-            display: block;
-            margin-top: 10px;
+        .error {
+            color: red;
+            text-align: center;
         }
     </style>
+
 </head>
 
 <body>
 
     <div class="box">
+
         <h2>Đăng ký</h2>
 
         {% if error %}
-        <p style="color:red">{{ error }}</p>
+        <p class="error">{{ error }}</p>
         {% endif %}
 
         <form method="POST">
             {% csrf_token %}
-            <input name="username" placeholder="Tên đăng nhập">
-            <input type="password" name="password" placeholder="Mật khẩu">
+
+            <label>Họ và tên *</label>
+            <input name="fullname" required>
+
+            <label>Tên tài khoản *</label>
+            <input name="username" required>
+
+            <label>Mật khẩu *</label>
+            <input type="password" name="password" required>
+
+            <label>Xác nhận lại mật khẩu *</label>
+            <input type="password" name="confirm_password" required>
+
+            <label>Email *</label>
+            <input name="email" required>
+
+            <label>Số điện thoại *</label>
+            <input name="phone" required>
+
+            <label>Giới tính</label>
+            <select name="gender">
+                <option>Nam</option>
+                <option>Nữ</option>
+            </select>
+
+            <label>Năm sinh *</label>
+            <input name="birth" required>
+
             <button type="submit">Đăng ký</button>
         </form>
 
-        <a href="/login/">Đã có tài khoản? Đăng nhập</a>
     </div>
 
 </body>
