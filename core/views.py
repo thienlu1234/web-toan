@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-
+from .models import Profile
+from .models import Course
 
 def home(request):
-    return render(request, 'home.html')
+    courses = Course.objects.all()
+    return render(request, 'home.html', {'courses': courses})
 
 
 def courses(request):
@@ -20,13 +22,15 @@ def register_view(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
-        # kiểm tra username
+        phone = request.POST.get('phone')
+        gender = request.POST.get('gender')
+        birth = request.POST.get('birth')
+
         if User.objects.filter(username=username).exists():
             return render(request, 'register.html', {
                 'error': 'Tài khoản đã tồn tại'
             })
 
-        # kiểm tra password
         if password != confirm_password:
             return render(request, 'register.html', {
                 'error': 'Mật khẩu không khớp'
@@ -39,15 +43,21 @@ def register_view(request):
             password=password
         )
 
-        # lưu họ tên
         user.first_name = fullname
         user.save()
+
+        # tạo profile
+        Profile.objects.create(
+            user=user,
+            phone=phone,
+            gender=gender,
+            birth=birth
+        )
 
         login(request, user)
         return redirect('home')
 
     return render(request, 'register.html')
-
 
 # LOGIN
 def login_view(request):
