@@ -84,6 +84,46 @@
         .btn:hover {
             background: #c23616;
         }
+
+        /* COURSES */
+        .courses {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .course-list {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .course-card {
+            width: 250px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            text-decoration: none;
+            color: black;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .course-card h3 {
+            padding: 15px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -121,6 +161,35 @@
         <p>Nền tảng học toán dành cho học sinh cấp 2</p>
         <br>
         <a class="btn" href="{% url 'courses' %}">Bắt đầu học</a>
+    </div>
+    <div class="courses">
+
+        <h2>Chọn lớp học 📚</h2>
+
+        <div class="course-list">
+
+            <a href="#" class="course-card">
+                <img src="{% static 'images/toan6.png' %}">
+                <h3>Lớp 6</h3>
+            </a>
+
+            <a href="#" class="course-card">
+                <img src="{% static 'images/toan7.png' %}">
+                <h3>Lớp 7</h3>
+            </a>
+
+            <a href="#" class="course-card">
+                <img src="{% static 'images/toan8.png' %}">
+                <h3>Lớp 8</h3>
+            </a>
+
+            <a href="#" class="course-card">
+                <img src="{% static 'images/toan9.png' %}">
+                <h3>Lớp 9</h3>
+            </a>
+
+        </div>
+
     </div>
 
 </body>
