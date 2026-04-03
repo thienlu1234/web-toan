@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import Profile
-from .models import Course
-
+from .models import Profile, Course, Lesson
 def home(request):
     courses = Course.objects.all()
     return render(request, 'home.html', {'courses': courses})
@@ -85,3 +83,18 @@ def logout_view(request):
 def course_detail(request, id):
     course = Course.objects.get(id=id)
     return render(request, 'course_detail.html', {'course': course})
+
+def course_detail(request, id):
+    course = Course.objects.get(id=id)
+    lessons = Lesson.objects.filter(course=course)
+
+    return render(request, 'course_detail.html', {
+        'course': course,
+        'lessons': lessons
+    })
+def lesson_detail(request, id):
+    lesson = Lesson.objects.get(id=id)
+
+    return render(request, 'lesson_detail.html', {
+        'lesson': lesson
+    })

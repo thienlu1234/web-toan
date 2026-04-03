@@ -308,7 +308,7 @@
                 <div class="course-list">
 
                     {% for course in courses %}
-                    <a href="#" class="course-card">
+                    <a href="{% url 'course_detail' course.id %}" class="course-card">
                         <img src="{{ course.image.url }}">
                         <h3>{{ course.name }}</h3>
                     </a>

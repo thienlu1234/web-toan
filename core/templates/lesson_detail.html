@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ lesson.name }}</title>
+</head>
+
+<body style="font-family: Arial; margin: 0;">
+
+    <div style="display: flex; height: 100vh;">
+
+        <!-- SIDEBAR -->
+        <div style="width: 300px; background: #f5f5f5; padding: 20px; overflow-y: auto;">
+            <h3>📚 Danh sách bài học</h3>
+
+            {% for l in lesson.course.lesson_set.all %}
+            <div style="margin: 10px 0;">
+                <a href="{% url 'lesson_detail' l.id %}" style="text-decoration: none;
+                          color: {% if l.id == lesson.id %}red{% else %}black{% endif %};">
+                    ▶ {{ l.name }}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- VIDEO -->
+        <div style="flex: 1; padding: 40px;">
+            <h1>{{ lesson.name }}</h1>
+
+            <video width="100%" controls>
+                <source src="{{ lesson.video.url }}">
+            </video>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ course.name }}</title>
+</head>
+
+<body style="font-family: Arial; padding: 40px;">
+
+    <!-- TÊN KHÓA HỌC -->
+    <h1>{{ course.name }}</h1>
+
+    <!-- ẢNH -->
+    <img src="{{ course.image.url }}" width="400">
+
+    <!-- MÔ TẢ -->
+    <p>{{ course.description }}</p>
+
+    <hr>
+
+    <!-- DANH SÁCH BÀI HỌC -->
+    <h2>📚 Danh sách bài học</h2>
+
+    {% if lessons %}
+    <ul>
+        {% for lesson in lessons %}
+        <li style="margin: 10px 0;">
+            <a href="{% url 'lesson_detail' lesson.id %}">
+                ▶ {{ lesson.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Chưa có bài học nào</p>
+    {% endif %}
+
+    <br>
+    <a href="/">⬅ Quay lại</a>
+
+</body>
+
+</html>
