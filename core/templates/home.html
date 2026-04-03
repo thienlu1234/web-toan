@@ -5,8 +5,8 @@
 <head>
     <title>Toán Mpecplus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="{% static 'images/logo.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         body {
@@ -15,41 +15,61 @@
             background: #f5f6fa;
         }
 
-        /* LAYOUT */
         .layout {
             display: flex;
         }
 
-        /* SIDEBAR */
         .sidebar {
-            width: 220px;
-            height: 100vh;
-            background: #2f3640;
-            color: white;
+            width: 250px;
+            min-height: 100vh;
+            background: #eef3f8;
             padding: 20px;
+            box-sizing: border-box;
         }
 
-        .sidebar h2 {
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            color: #1f5f99;
             text-decoration: none;
-            margin: 12px 0;
+            margin: 8px 0;
+            transition: 0.2s;
+            font-weight: 600;
         }
 
-        .sidebar a:hover {
-            color: #fbc531;
+        .menu-item i {
+            width: 22px;
+            text-align: center;
+            font-size: 20px;
         }
 
-        /* MAIN */
+        .menu-item:hover {
+            background: #dfe6ee;
+        }
+
+        .menu-item.active {
+            background: #dfe8f5;
+        }
+
+        .sidebar h4 {
+            margin: 24px 0 10px;
+            color: #2f3640;
+            font-size: 18px;
+        }
+
+        .sidebar hr {
+            border: none;
+            border-top: 1px solid #cfd8e3;
+            margin: 14px 0;
+        }
+
         .main {
             flex: 1;
         }
 
-        /* NAVBAR */
         .navbar {
             background: #353b48;
             padding: 15px 30px;
@@ -58,7 +78,6 @@
             align-items: center;
         }
 
-        /* LOGO */
         .logo {
             display: flex;
             align-items: center;
@@ -76,7 +95,6 @@
             font-size: 18px;
         }
 
-        /* RIGHT MENU */
         .right {
             display: flex;
             align-items: center;
@@ -84,12 +102,24 @@
         }
 
         .right a {
+            position: relative;
             color: white;
             text-decoration: none;
         }
 
-        .right a:hover {
-            color: #fbc531;
+        .right a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: -3px;
+            background: #fbc531;
+            transition: 0.3s;
+        }
+
+        .right a:hover::after {
+            width: 100%;
         }
 
         .user {
@@ -97,7 +127,6 @@
             font-weight: bold;
         }
 
-        /* HERO */
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -109,13 +138,13 @@
             padding: 12px 25px;
             border-radius: 5px;
             text-decoration: none;
+            display: inline-block;
         }
 
         .btn:hover {
             background: #c23616;
         }
 
-        /* COURSES */
         .courses {
             text-align: center;
             padding: 40px 20px;
@@ -158,31 +187,66 @@
 </head>
 
 <body>
-
     <div class="layout">
 
-        <!-- SIDEBAR -->
         <div class="sidebar">
-            <h2>📚 Mpecplus</h2>
 
-            <a href="{% url 'home' %}">Trang chủ</a>
-            <a href="{% url 'courses' %}">Khóa học</a>
-            <a href="#">Thi online</a>
-            <a href="#">Tài liệu</a>
-            <a href="#">Lịch học</a>
+            <a href="{% url 'login' %}" class="menu-item active">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Đăng nhập</span>
+            </a>
 
             <hr>
 
-            <a href="#">Facebook</a>
-            <a href="#">Youtube</a>
+            <a href="{% url 'courses' %}" class="menu-item">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>Khóa học</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Thi online</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Đấu trường lý thuyết</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Tài liệu</span>
+            </a>
+
+            <hr>
+
+            <h4>Liên kết</h4>
+
+            <a href="#" class="menu-item">
+                <i class="fa-brands fa-facebook"></i>
+                <span>Facebook Mpecplus</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-brands fa-youtube"></i>
+                <span>YouTube Mpecplus</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>TikTok Mpecplus</span>
+            </a>
+
+            <a href="#" class="menu-item">
+                <i class="fa-brands fa-facebook-messenger"></i>
+                <span>Messenger Mpecplus</span>
+            </a>
+
         </div>
 
-        <!-- MAIN -->
         <div class="main">
 
-            <!-- NAVBAR -->
             <div class="navbar">
-
                 <a href="{% url 'home' %}" class="logo">
                     <img src="{% static 'images/logo.png' %}">
                     <span>Toán Mpecplus</span>
@@ -201,10 +265,8 @@
                     <a href="{% url 'register' %}">Đăng ký</a>
                     {% endif %}
                 </div>
-
             </div>
 
-            <!-- HERO -->
             <div class="hero">
                 <h1>Học Toán cấp 2 dễ hiểu 🚀</h1>
                 <p>Nền tảng học toán dành cho học sinh cấp 2</p>
@@ -212,13 +274,10 @@
                 <a class="btn" href="{% url 'courses' %}">Bắt đầu học</a>
             </div>
 
-            <!-- COURSES -->
             <div class="courses">
-
                 <h2>Chọn lớp học 📚</h2>
 
                 <div class="course-list">
-
                     <a href="#" class="course-card">
                         <img src="{% static 'images/toan6.png' %}">
                         <h3>Lớp 6</h3>
@@ -238,15 +297,11 @@
                         <img src="{% static 'images/toan9.png' %}">
                         <h3>Lớp 9</h3>
                     </a>
-
                 </div>
-
             </div>
 
         </div>
-
     </div>
-
 </body>
 
 </html>
