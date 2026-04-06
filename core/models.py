@@ -45,3 +45,9 @@ class Lesson(models.Model):
             return url
 
         return ""
+class Enrollment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.course.name}"    

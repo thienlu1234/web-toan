@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import Profile
-from .models import Course
-from .models import Course, Profile, Lesson
 
-admin.site.register(Lesson)
-admin.site.register(Profile)
+from .models import Course, Profile, Lesson, Enrollment
+
 # Register your models here.
 
 
 admin.site.register(Course)
+
+admin.site.register(Enrollment)

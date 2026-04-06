@@ -10,4 +10,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('course/<int:id>/', views.course_detail, name='course_detail'),
     path('lesson/<int:id>/', views.lesson_detail, name='lesson_detail'),
+    path('buy/<int:id>/', views.buy_course, name='buy_course'),
 ]

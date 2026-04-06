@@ -3,9 +3,34 @@
 
 <head>
     <title>{{ course.name }}</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        .btn-buy {
+            background: orange;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .locked {
+            color: gray;
+        }
+
+        .unlocked {
+            color: green;
+        }
+    </style>
 </head>
 
-<body style="font-family: Arial; padding: 40px;">
+<body>
 
     <!-- TÊN KHÓA HỌC -->
     <h1>{{ course.name }}</h1>
@@ -16,23 +41,42 @@
     <!-- MÔ TẢ -->
     <p>{{ course.description }}</p>
 
+    <!-- NÚT MUA -->
+    {% if not is_bought %}
+        <a href="{% url 'buy_course' course.id %}" class="btn-buy">
+            💰 Mua khóa học
+        </a>
+    {% else %}
+        <p style="color: green;">✅ Bạn đã mua khóa học này</p>
+    {% endif %}
+
     <hr>
 
     <!-- DANH SÁCH BÀI HỌC -->
     <h2>📚 Danh sách bài học</h2>
 
     {% if lessons %}
-    <ul>
-        {% for lesson in lessons %}
-        <li style="margin: 10px 0;">
-            <a href="{% url 'lesson_detail' lesson.id %}">
-                ▶ {{ lesson.name }}
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for lesson in lessons %}
+                <li style="margin: 10px 0;">
+
+                    {% if is_bought %}
+                        <!-- ĐÃ MUA -->
+                        <a href="{% url 'lesson_detail' lesson.id %}" class="unlocked">
+                            ▶ {{ lesson.name }}
+                        </a>
+                    {% else %}
+                        <!-- CHƯA MUA -->
+                        <span class="locked">
+                            🔒 {{ lesson.name }}
+                        </span>
+                    {% endif %}
+
+                </li>
+            {% endfor %}
+        </ul>
     {% else %}
-    <p>Chưa có bài học nào</p>
+        <p>Chưa có bài học nào</p>
     {% endif %}
 
     <br>
